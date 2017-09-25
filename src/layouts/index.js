@@ -3,33 +3,47 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
-import './index.css'
+import './index.scss'
+
+const navLinks = [
+  {
+    name: 'HOME',
+    target: '/',
+  }, 
+  {
+    name: 'CATEGORIES',
+    target: '/categories',
+  }, 
+  {
+    name: 'BRANDS',
+    target: '/brands',
+  }, 
+  {
+    name: 'PRODUCTS',
+    target: '/products',
+  }
+]
 
 const Header = () => (
   <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
+    className="navbar"
   >
     <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
+      className="navbarInner"
     >
-      <h1 style={{ margin: 0 }}>
+      { navLinks.map(link => (
+      <div className="navLink" key={link.target}> 
         <Link
-          to="/"
+          to={link.target}
           style={{
             color: 'white',
             textDecoration: 'none',
           }}
         >
-          Gatsby
+          {link.name}
         </Link>
-      </h1>
+      </div>
+      )) }
     </div>
   </div>
 )
